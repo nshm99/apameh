@@ -1,0 +1,52 @@
+﻿<Window x:Class="DBProject.Duty"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DBProject"
+        mc:Ignorable="d"
+        Title="Duty" Height="450" Width="800">
+    <Window.Resources>
+        <ContextMenu x:Key="ItemContextMenu" 
+                           Name="ItemContextMenu"  >
+            <MenuItem Header="حذف" Click="RemoveButton_Click"/>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+
+        <ListView x:Name="lvUsers">
+
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="محصول خریداری شده" Width="200" DisplayMemberBinding="{Binding product}" />
+                    <GridViewColumn Header="فروشنده" Width="200" DisplayMemberBinding="{Binding provider}" />
+                    <GridViewColumn Header="تعداد" Width="200" DisplayMemberBinding="{Binding count}" />
+                    <GridViewColumn Header="قیمت" Width="200" DisplayMemberBinding="{Binding price}" />
+                </GridView>
+            </ListView.View>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseRightButtonDown"
+                                 Handler="OnListViewItem_PreviewMouseButtonDown"
+                                 />
+                    <EventSetter Event="MouseDoubleClick" Handler="DetailButton_Click"/>
+                    <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
+                    <Setter Property="Background" Value="AliceBlue" />
+                    <Setter Property="BorderBrush" Value="DarkGray" />
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="Purple" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+
+
+        </ListView>
+
+    </Grid>
+</Window>
