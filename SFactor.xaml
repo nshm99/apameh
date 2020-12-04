@@ -13,8 +13,17 @@
         </ContextMenu>
     </Window.Resources>
     <Grid>
+        <Button Content="فیتلر کن" Margin="426,4,305.6,383"/>
+        <Menu Margin="320,5,429.6,383">
+            <MenuItem Header="فیلتر" Height="32">
+                <MenuItem Header="تاریخ"/>
+                <MenuItem Header="واسطه فروش"/>
+                <MenuItem Header="کالا"/>
+                
+            </MenuItem>
+        </Menu>
 
-        <ListView x:Name="lvUsers">
+        <ListView x:Name="lvUsers" Margin="0,42,-0.4,0">
 
 
             <ListView.View>
